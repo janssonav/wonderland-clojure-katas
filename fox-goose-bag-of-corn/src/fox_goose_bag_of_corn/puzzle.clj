@@ -12,8 +12,6 @@
 
 (def start-pos [[[:fox :goose :corn :you] [:boat] []]])
 
-(def test-pos (remove-boat (to-sets (first start-pos))))
-
 (def cannot-coexist #{#{:fox :goose} #{:corn :goose}})
 
 (defn is-valid-position? [pos]
@@ -22,7 +20,7 @@
 (defn is-end [[l b r]]
   (= #{:fox :goose :corn :you} r))
 
-(defn next-positions [[l b r :as pos]]
+(defn next-positions [[l b r]]
   (cond
    (contains? l :you)
      (let [l-things (disj l :you)
